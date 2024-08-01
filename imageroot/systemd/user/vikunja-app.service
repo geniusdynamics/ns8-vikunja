@@ -23,6 +23,7 @@ ExecStart=/usr/bin/podman run --conmon-pidfile %t/vikunja-app.pid \
     --pod-id-file %t/vikunja.pod-id --replace -d --name  vikunja-app \
     --volume vikunja-app:/app/vikunja/files/:Z \
     --env-file=%S/state/vikunja-db.env \
+    --env-file=%S/state/vikunja.env \
     ${VIKUNJA_IMAGE}
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/vikunja-app.ctr-id -t 10
 ExecReload=/usr/bin/podman kill -s HUP vikunja-app
