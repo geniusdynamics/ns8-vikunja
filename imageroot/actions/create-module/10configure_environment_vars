@@ -9,6 +9,7 @@ import json
 import sys
 import agent
 import os
+import secrets
 
 # Try to parse the stdin as JSON.
 # If parsing fails, output everything to stderr
@@ -34,4 +35,15 @@ postgres_config = {
     "POSTGRES_DB": POSTGRES_DB
 }
 agent.write_envfile("database.env", postgres_config)
+
+
+vikunja = {
+    "VIKUNJA_DATABASE_HOST": "postgresql-app",
+    "VIKUNJA_DATABASE_PASSWORD": POSTGRES_PASSWORD,
+    "VIKUNJA_DATABASE_TYPE": "postgres",
+    "VIKUNJA_DATABASE_USER": POSTGRES_USER,
+    "VIKUNJA_DATABASE_DATABASE": POSTGRES_DB,
+    "VIKUNJA_SERVICE_JWTSECRET": secrets.token_urlsafe(32),
+}
+agent.write_envfile("vikunja-db.env", vikunja)
 #agent.dump_env()
