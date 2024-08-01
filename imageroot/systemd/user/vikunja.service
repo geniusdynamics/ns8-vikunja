@@ -22,7 +22,7 @@ ExecStartPre=/bin/rm -f %t/vikunja.pid %t/vikunja.pod-id
 ExecStartPre=/usr/bin/podman pod create --infra-conmon-pidfile %t/vikunja.pid \
     --pod-id-file %t/vikunja.pod-id \
     --name vikunja \
-    --publish 127.0.0.1:${TCP_PORT}:80 \
+    --publish 127.0.0.1:${TCP_PORT}:3456 \
     --replace
 ExecStart=/usr/bin/podman pod start --pod-id-file %t/vikunja.pod-id
 ExecStop=/usr/bin/podman pod stop --ignore --pod-id-file %t/vikunja.pod-id -t 10
