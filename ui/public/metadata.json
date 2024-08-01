@@ -1,19 +1,19 @@
 {
   "name": "vikunja",
   "description": {
-    "en": "My vikunja module"
+    "en": "Plan your projects with the elegance of a sloth on a sunny day."
   },
   "categories": [],
   "authors": [
     {
-      "name": "Name Surname",
-      "email": "author@yourmail.org"
+      "name": "Kemboi Elvis",
+      "email": "kemboielvis@genius.ke"
     }
   ],
   "docs": {
-    "documentation_url": "https://docs.vikunja.com/",
-    "bug_url": "https://github.com/NethServer/dev",
-    "code_url": "https://github.com/author/ns8-vikunja"
+    "documentation_url": "https://vikunja.io/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-vikunja"
   },
-  "source": "ghcr.io/nethserver/vikunja"
+  "source": "ghcr.io/geniusdynamics/vikunja"
 }
