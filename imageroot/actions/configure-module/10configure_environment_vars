@@ -15,8 +15,29 @@ data = json.load(sys.stdin)
 
 #This is specific to you module, so you need to change it accordingly.
 HOST = data.get('host')
+# Emails
+rdb = agent.redis_connect(use_replica=True)
+smtp_settings = agent.get_smarthost_settings(rdb)
+SMTP_HOST = smtp_settings['host']
+SMTP_PORT = smtp_settings['port']
+SMTP_USERNAME = smtp_settings['username']
+SMTP_PASSWORD = smtp_settings['password']
+SMTP_ENCRYPTION = smtp_settings['encrypt_smtp']
+SMTP_ENABLED='1' if smtp_settings['enabled'] else '0'
+# VIKUNJA_MAILER_ENABLED: 1
+#       VIKUNJA_MAILER_FORCESSL: 1
+#       VIKUNJA_MAILER_HOST: smtp.gmail.com
+#       VIKUNJA_MAILER_PORT: 465
+#       VIKUNJA_MAILER_USERNAME: youremail@gmail.com
+#       VIKUNJA_MAILER_PASSWORD: yourgmailpassword
 vikunja = {
     "VIKUNJA_SERVICE_PUBLICURL": f'https://{HOST}',
+    "VIKUNJA_MAILER_ENABLED": SMTP_ENABLED,
+    "VIKUNJA_MAILER_FORCESSL": '0',
+    "VIKUNJA_MAILER_HOST": SMTP_HOST,
+    "VIKUNJA_MAILER_PORT": SMTP_PORT,
+    "VIKUNJA_MAILER_USERNAME": SMTP_USERNAME,
+    "VIKUNJA_MAILER_PASSWORD": SMTP_PASSWORD,
 }
 agent.write_envfile("vikunja.env", vikunja)
 # just before starting systemd unit
