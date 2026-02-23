@@ -14,7 +14,7 @@ images=()
 repobase="${REPOBASE:-ghcr.io/geniusdynamics}"
 # Configure the image name
 reponame="vikunja"
-vikunja_version="0.24.6"
+vikunja_version="1.1.0"
 # Create a new empty container image
 container=$(buildah from scratch)
 
