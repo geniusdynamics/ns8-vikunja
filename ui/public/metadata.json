@@ -1,9 +1,13 @@
 {
   "name": "vikunja",
   "description": {
-    "en": "Plan your projects with the elegance of a sloth on a sunny day."
+    "en": "Plan your projects with the elegance of a sloth on a sunny day.",
+    "it": "Vikunja è un'applicazione self-hosted di attività e project management con liste, kanban, promemoria e condivisione."
   },
-  "categories": [],
+  "categories": [
+    "collaboration",
+    "office"
+  ],
   "authors": [
     {
       "name": "Kemboi Elvis",
